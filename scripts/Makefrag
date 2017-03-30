@@ -212,9 +212,16 @@ riscv_rocketcore:
 riscv_toolchain:
 	${SCRIPTS}/setup.rocketchip.submodule.sh
 	# Install necessary packages (Ubuntu)
+	-lsb_release -d | grep -i ubuntu && \
 	sudo apt-get install autoconf automake autotools-dev curl \
 	libmpc-dev libmpfr-dev libgmp-dev gawk build-essential bison flex \
 	texinfo gperf libtool patchutils bc
+	# Install necessary packages (OpenSUSE)
+	-lsb_release -d | grep -i suse && \
+	sudo zypper install autoconf automake autotools-dev curl \
+	mpc-devel mpfr-devel gmp-devel gawk bison flex \
+	texinfo gperf libtool patchutils bc
+	-lsb_release -d | grep -i suse && sudo zypper -t pattern devel_basis
 	# Switch to the master (priv1.7 ISA) branch and setup build script
 	cd ${RISCVTOOLS} && \
 	git checkout -B current && \
