@@ -27,7 +27,7 @@ UBOOT_REPO = u-boot-xlnx
 
 UBOOT_CONFIG = zynq_zed
 
-RISCV_CORE_ARCH = RV64IMA
+RISCV_CORE_ARCH = rv64ima
 
 RISCV_CORE_CONFIG = DefaultFPGANoFPUConfig
 
